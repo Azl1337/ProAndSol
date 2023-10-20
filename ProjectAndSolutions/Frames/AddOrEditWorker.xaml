@@ -1,0 +1,54 @@
+﻿<Page x:Class="ProjectAndSolutions.Frames.AddOrEditWorker"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectAndSolutions.Frames"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddOrEditWorker" IsVisibleChanged="PageIsVisibleChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="ФИО "/>
+        <Label Content="Табельный номер" Grid.Row="1"/>
+        <Label Content="Должность" Grid.Row="2"/>
+        <Label Content="Подразделение" Grid.Row="3"/>
+        <Label Content="Email" Grid.Row="4"/>
+        <Label Content="Телефон" Grid.Row="5"/>
+
+        <TextBox x:Name="TBoxLogin" Text="{Binding FIO}" Grid.Row="0" Grid.Column="1" Margin="5 5"/>
+        <TextBox x:Name="TBoxPassword" Text="{Binding ServiceNum}" Grid.Row="1" Grid.Column="1" Margin="5 5"/>
+        <TextBox x:Name="TBoxLastName" Text="{Binding Position}" Grid.Row="2" Grid.Column="1" Margin="5 5"/>
+        <ComboBox x:Name="CBoxWorkerDevision" SelectedItem="{Binding Devision}" Grid.Row="3" Grid.Column="1" Margin="5 5" DisplayMemberPath="DevName" SelectedValuePath="ID_Devision"/>
+        <TextBox x:Name="TBoxPatronymic" Text="{Binding Email}" Grid.Row="4" Grid.Column="1" Margin="5 5"/>
+        <TextBox x:Name="TBoxCityAccommodation" Text="{Binding TelephoneNum}" Grid.Row="5" Grid.Column="1" Margin="5 5"/>
+        <Grid Grid.Row="6" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="230"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Button x:Name="BtnOK" Content="OK" Click="BtnOkClick"/>
+            <Button x:Name="BtnCancel" Content="Cancel" Click="BtnCancelClick" Margin="5 0 5 0"/>
+        </StackPanel>
+    </Grid>
+</Page>

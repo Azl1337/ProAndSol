@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProAndSolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Devision">
+    <Key>
+      <PropertyRef Name="ID_Devision" />
+    </Key>
+    <Property Name="ID_Devision" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DevName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HeadOffice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Worker" Type="Byte" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Worker" Relationship="Self.FK_Devision_Worker" FromRole="Devision" ToRole="Worker" />
+    <NavigationProperty Name="Worker1" Relationship="Self.FK_Worker_Devision" FromRole="Devision" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="ID_Worker" />
+    </Key>
+    <Property Name="ID_Worker" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ServiceNum" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_Devision" Type="Int16" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TelephoneNum" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfAdd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOfDis" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Devision" Relationship="Self.FK_Devision_Worker" FromRole="Worker" ToRole="Devision" />
+    <NavigationProperty Name="Devision1" Relationship="Self.FK_Worker_Devision" FromRole="Worker" ToRole="Devision" />
+  </EntityType>
+  <Association Name="FK_Devision_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+    <End Role="Devision" Type="Self.Devision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="ID_Worker" />
+      </Principal>
+      <Dependent Role="Devision">
+        <PropertyRef Name="ID_Worker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_Devision">
+    <End Role="Devision" Type="Self.Devision" Multiplicity="1" />
+    <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devision">
+        <PropertyRef Name="ID_Devision" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="ID_Devision" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProAndSolEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Devision" EntityType="Self.Devision" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" />
+    <AssociationSet Name="FK_Devision_Worker" Association="Self.FK_Devision_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Devision" EntitySet="Devision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_Devision" Association="Self.FK_Worker_Devision">
+      <End Role="Devision" EntitySet="Devision" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

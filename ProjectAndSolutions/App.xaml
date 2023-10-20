@@ -1,0 +1,55 @@
+﻿<Application x:Class="ProjectAndSolutions.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ProjectAndSolutions"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="background" Color="#FFFCEAE1"/>
+        <SolidColorBrush x:Key="secondbackground" Color="#FFCBE1DC"/>
+        <SolidColorBrush x:Key="akcent" Color="#FFD89480"/>
+        <SolidColorBrush x:Key="akcent2" Color="#FFCBE1DC"/>
+
+        <Style TargetType="Window" x:Key="Window">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="MinWidth" Value="800"/>
+            <Setter Property="MinHeight" Value="600"/>
+            <Setter Property="Background" Value="{DynamicResource background}"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{DynamicResource akcent}"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="MaxWidth" Value="130"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="MaxHeight" Value="30"/>
+            <Setter Property="Background" Value="{DynamicResource akcent2}"/>
+            <Setter Property="Foreground" Value="{DynamicResource akcent}"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5 15"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="MaxHeight" Value="30"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="{DynamicResource secondbackground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource akcent}"/>
+            <Setter Property="SelectionBrush" Value="{DynamicResource akcent}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource akcent}"/>
+            <Setter Property="CaretBrush" Value="{DynamicResource akcent}"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+
+    </Application.Resources>
+</Application>
